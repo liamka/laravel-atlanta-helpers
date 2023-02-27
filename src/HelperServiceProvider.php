@@ -1,4 +1,4 @@
-<?php namespace Atlanta\Helpers;
+<?php namespace atlanta\helpers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -16,10 +16,10 @@ class HelperServiceProvider extends ServiceProvider
             Commands\HelperMakeCommand::class,
         ]);
 
-        //include the active package atlanta helpers
-        foreach (config('atlanta.package_helpers', []) as $activeHelper) {
+        //include the active package helpers
+        foreach (config('helpers.package_helpers', []) as $activeHelper) {
 
-            $file = __DIR__ . '/AtlantaHelpers/' . $activeHelper . '.php';
+            $file = __DIR__ . '/Helpers/' . $activeHelper . '.php';
 
             if (file_exists($file)) {
                 require_once($file);
@@ -27,11 +27,11 @@ class HelperServiceProvider extends ServiceProvider
         }
 
         //load custom helpers with a mapper
-        if (count(config('atlanta.custom_helpers', []))) {
+        if (count(config('helpers.custom_helpers', []))) {
 
-            foreach (config('atlanta.custom_helpers', []) as $customHelper) {
+            foreach (config('helpers.custom_helpers', []) as $customHelper) {
 
-                $file = app_path() . '/' . $this->getAtlantaHelpersDirectory() . '/' . $customHelper . '.php';
+                $file = app_path() . '/' . $this->getHelpersDirectory() . '/' . $customHelper . '.php';
 
                 if(file_exists($file)) {
                     require_once($file);
@@ -42,8 +42,8 @@ class HelperServiceProvider extends ServiceProvider
         //load custom helpers automatically
         else {
 
-            //include the custom atlanta helpers
-            foreach (glob(app_path() . '/' . $this->getAtlantaHelpersDirectory() . '/*.php') as $file) {
+            //include the custom helpers
+            foreach (glob(app_path() . '/' . $this->getHelpersDirectory() . '/*.php') as $file) {
                 require_once($file);
             }
         }
@@ -58,7 +58,7 @@ class HelperServiceProvider extends ServiceProvider
     {
         //publish configuration
         $this->publishes([
-            __DIR__ . '/config/atlanta.php' => config_path('atlanta.php'),
+            __DIR__ . '/config/helpers.php' => config_path('helpers.php'),
         ], 'config');
     }
 
@@ -67,8 +67,8 @@ class HelperServiceProvider extends ServiceProvider
      *
      * @return mixed
      */
-    public function getAtlantaHelpersDirectory()
+    public function getHelpersDirectory()
     {
-        return config('atlanta.directory', 'AtlantaHelpers');
+        return config('helpers.directory', 'Helpers');
     }
 }
