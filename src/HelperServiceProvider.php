@@ -17,7 +17,7 @@ class HelperServiceProvider extends ServiceProvider
         ]);
 
         //include the active package atlanta helpers
-        foreach (config('atlanta_helpers.package_helpers', []) as $activeHelper) {
+        foreach (config('atlanta.package_helpers', []) as $activeHelper) {
 
             $file = __DIR__ . '/AtlantaHelpers/' . $activeHelper . '.php';
 
@@ -27,9 +27,9 @@ class HelperServiceProvider extends ServiceProvider
         }
 
         //load custom helpers with a mapper
-        if (count(config('atlanta_helpers.custom_helpers', []))) {
+        if (count(config('atlanta.custom_helpers', []))) {
 
-            foreach (config('atlanta_helpers.custom_helpers', []) as $customHelper) {
+            foreach (config('atlanta.custom_helpers', []) as $customHelper) {
 
                 $file = app_path() . '/' . $this->getAtlantaHelpersDirectory() . '/' . $customHelper . '.php';
 
@@ -58,7 +58,7 @@ class HelperServiceProvider extends ServiceProvider
     {
         //publish configuration
         $this->publishes([
-            __DIR__ . '/config/atlanta_helpers.php' => config_path('atlanta_helpers.php'),
+            __DIR__ . '/config/atlanta.php' => config_path('atlanta.php'),
         ], 'config');
     }
 
@@ -69,6 +69,6 @@ class HelperServiceProvider extends ServiceProvider
      */
     public function getAtlantaHelpersDirectory()
     {
-        return config('atlanta_helpers.directory', 'AtlantaHelpers');
+        return config('atlanta.directory', 'AtlantaHelpers');
     }
 }

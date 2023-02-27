@@ -43,6 +43,6 @@ class HelperMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\\' . config('atlanta_helpers.directory', 'Helpers');
+        return $rootNamespace . '\\' . config('atlanta.directory', 'Helpers');
     }
 }
