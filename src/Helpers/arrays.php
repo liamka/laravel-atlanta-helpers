@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Arr;
 
-if (!function_exists('json_to_array')) {
-    function json_to_array($json, $returnArray = true)
+if (!function_exists('jsonToArray')) {
+    function jsonToArray($json, $returnArray = true)
     {
         return json_decode((string) $json, $returnArray);
     }
 }
 
-if (!function_exists('json_to_array')) {
-    function array_to_json($array = [], $options = []): bool|string
+if (!function_exists('ArrayToJson')) {
+    function ArrayToJson($array = [], $options = []): bool|string
     {
         $default = [\JSON_UNESCAPED_UNICODE];
         $options = Arr::wrap($options);
