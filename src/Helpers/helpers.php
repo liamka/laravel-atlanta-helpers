@@ -111,3 +111,21 @@ if (!function_exists('vPregMatch')) {
         return (bool)preg_match($pattern, $string);
     }
 }
+
+if (!function_exists('taps')) {
+    function taps(...$arguments): mixed
+    {
+        $callback = $arguments[array_key_last($arguments)];
+
+        array_pop($arguments);
+
+        $arguments = null === $arguments ? [] : $arguments;
+
+        if (is_object($callback)) {
+            return $callback(...$arguments);
+        }
+
+        return null;
+
+    }
+}
