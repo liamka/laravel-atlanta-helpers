@@ -26,7 +26,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "atlanta\\helpers\\Test\\": "tests"
+            "Atlanta\\Helpers\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -38,7 +38,7 @@
         },
         "laravel": {
             "providers": [
-                "atlanta\\helpers\\HelperServiceProvider"
+                "Atlanta\\Helpers\\HelperServiceProvider"
             ]
         }
     }
