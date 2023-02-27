@@ -1,0 +1,45 @@
+{
+    "name": "atlanta/helpers",
+    "type": "library",
+    "description": "generic helpers",
+    "keywords": [
+        "helpers"
+    ],
+    "homepage": "https://github.com/liamka/laravel-atlanta-helpers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MIX",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "illuminate/console": "^6.0|^7.0|^8.0|^9.0|^10.0",
+        "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0",
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "atlanta\\helpers\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "atlanta\\helpers\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "atlanta\\helpers\\HelperServiceProvider"
+            ]
+        }
+    }
+}
