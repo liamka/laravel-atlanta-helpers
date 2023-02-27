@@ -1,4 +1,4 @@
-<?php namespace Atlanta\Helpers\Commands;
+<?php namespace Atlanta\Helpers;
 
 use Illuminate\Support\ServiceProvider;
 
