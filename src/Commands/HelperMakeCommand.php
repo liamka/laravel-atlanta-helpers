@@ -1,4 +1,4 @@
-<?php namespace atlanta\helpers\Commands;
+<?php namespace Atlanta\Helpers\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 

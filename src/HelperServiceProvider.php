@@ -1,4 +1,4 @@
-<?php namespace atlanta\helpers;
+<?php namespace Atlanta\Helpers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -16,14 +16,9 @@ class HelperServiceProvider extends ServiceProvider
             Commands\HelperMakeCommand::class,
         ]);
 
-        //include the active package helpers
-        foreach (config('helpers.package_helpers', []) as $activeHelper) {
-
-            $file = __DIR__ . '/Helpers/' . $activeHelper . '.php';
-
-            if (file_exists($file)) {
-                require_once($file);
-            }
+        //include package helpers
+        foreach (glob(__DIR__ . '/Helpers/*.php') as $file) {
+            require_once($file);
         }
 
         //load custom helpers with a mapper
