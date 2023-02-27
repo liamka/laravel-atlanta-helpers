@@ -1,4 +1,4 @@
-<?php namespace atlanta\helpers\Commands;
+<?php namespace Atlanta\Helpers\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
@@ -43,6 +43,6 @@ class HelperMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\\' . config('atlanta.directory', 'Helpers');
+        return $rootNamespace . '\\' . config('atlanta.directory', 'AtlantaHelpers');
     }
 }

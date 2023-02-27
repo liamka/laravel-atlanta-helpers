@@ -16,7 +16,7 @@ Add the service provider to the providers array in `config/app.php`.
 
 ``` php
 'providers' => [
-    atlanta\helpers\HelperServiceProvider::class,
+    Atlanta\Helpers\HelperServiceProvider::class,
 ];
 ```
 
@@ -27,13 +27,13 @@ If you are using Laravel's automatic package discovery, you can skip this step.
 You can publish everything at once
 
 ``` php
-php artisan vendor:publish --provider="atlanta\helpers\HelperServiceProvider"
+php artisan vendor:publish --provider="Atlanta\Helpers\HelperServiceProvider"
 ```
 
 or you can publish groups individually.
 
 ``` php
-php artisan vendor:publish --provider="atlanta\helpers\HelperServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Atlanta\Helpers\HelperServiceProvider" --tag="config"
 ```
 
 ## Usage
