@@ -69,3 +69,10 @@ if (!\function_exists('isUrl')) {
         return filter_var($value, \FILTER_VALIDATE_URL) !== false;
     }
 }
+
+if (!\function_exists('isHtml')) {
+    function isHtml($string): bool
+    {
+        return is_string($string) && (strlen(strip_tags($string)) < strlen($string));
+    }
+}
