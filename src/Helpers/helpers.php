@@ -65,8 +65,8 @@ if (!function_exists('randomInteger')) {
     }
 }
 
-if (!\function_exists('vkSprintF')) {
-    function vkSprintF($string, $params = [], $hide_if_null_value = false): mixed
+if (!\function_exists('aprintf')) {
+    function aprintf($string, $params = [], $hide_if_null_value = false): mixed
     {
         $params = arrayTo2d($params);
 
