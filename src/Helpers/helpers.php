@@ -68,7 +68,7 @@ if (!function_exists('randomInteger')) {
 if (!\function_exists('vkSprintF')) {
     function vkSprintF($string, $params = [], $hide_if_null_value = false): mixed
     {
-        $params = arrayTo2d($string);
+        $params = arrayTo2d($params);
 
         $vars = [];
         \preg_match_all('#{{(.*?)}}#s', $string, $matches);
