@@ -72,3 +72,39 @@ if (!\function_exists('arrayDiffAssocRecursive')) {
         return $difference;
     }
 }
+
+if (!function_exists('arrayTo2d')) {
+    function arrayTo2d($array = [], $delimiter = '.')
+    {
+        if (empty($array)) {
+            return [];
+        }
+
+        $a = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($array));
+        $result = [];
+        foreach ($a as $singleA) {
+            $keys = [];
+            foreach (\range(0, $a->getDepth()) as $depth) {
+                $keys[] = $a->getSubIterator($depth)->key();
+            }
+
+            $primary_key = implode($delimiter, $keys);
+
+            if (is_numeric(substr($primary_key, -1, 1))) {
+                $d = $keys;
+
+                array_pop($d);
+
+                $k_ = implode($delimiter, $d);
+
+                if ($k_ !== '') {
+                    $result[implode($delimiter, $d)][] = $singleA;
+                }
+            }
+
+            $result[$primary_key] = $singleA;
+        }
+
+        return $result;
+    }
+}
