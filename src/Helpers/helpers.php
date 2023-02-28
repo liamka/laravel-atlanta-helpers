@@ -74,14 +74,10 @@ if (!\function_exists('vkSprintF')) {
             $matches = $matches[1];
 
             foreach ($matches as $match) {
-
-                $array = \explode('|', $match);
                 $vars[] = [
                     'search' => $match,
                     'replace' => @$params[$match]
                 ];
-
-                var_dump($vars);
             }
         }
 
