@@ -20,8 +20,8 @@ if (!function_exists('nl')) {
     }
 }
 
-if (!function_exists('random')) {
-    function random(int $length = 10, string $type = 'ANY'): string
+if (!function_exists('randomChars')) {
+    function randomChars(int $length = 10, string $type = 'ANY'): string
     {
         $characters = '';
 
@@ -54,14 +54,14 @@ if (!function_exists('random')) {
 if (!function_exists('randomString')) {
     function randomString(int $length = 10): string
     {
-        return random($length, 'chars');
+        return randomChars($length, 'chars');
     }
 }
 
 if (!function_exists('randomInteger')) {
     function randomInteger(int $length = 10): int
     {
-        return (int)random($length, 'numbers');
+        return (int)randomChars($length, 'numbers');
     }
 }
 
