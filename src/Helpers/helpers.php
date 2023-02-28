@@ -65,8 +65,8 @@ if (!function_exists('randomInteger')) {
     }
 }
 
-if (!\function_exists('vkSpringF')) {
-    function __vksprintf($string, $params = [], $hide_if_null_value = false): mixed
+if (!\function_exists('vkSprintF')) {
+    function vkSprintF($string, $params = [], $hide_if_null_value = false): mixed
     {
         $params = Arr::flatten($params);
 
@@ -96,8 +96,8 @@ if (!\function_exists('vkSpringF')) {
     }
 }
 
-if (!function_exists('vPregMatch')) {
-    function vPregMatch($string, $pattern): bool
+if (!function_exists('vkPregMatch')) {
+    function vkPregMatch($string, $pattern): bool
     {
         $pattern = str_replace('.', '\.', $pattern);
         $pattern = str_replace('/', '\/', $pattern);
