@@ -68,19 +68,20 @@ if (!function_exists('randomInteger')) {
 if (!\function_exists('vkSprintF')) {
     function vkSprintF($string, $params = [], $hide_if_null_value = false): mixed
     {
-        $params = Arr::flatten($params);
-
         $vars = [];
         \preg_match_all('#{{(.*?)}}#s', $string, $matches);
         if (!isClean($matches[1])) {
             $matches = $matches[1];
 
             foreach ($matches as $match) {
+
                 $array = \explode('|', $match);
                 $vars[] = [
                     'search' => $match,
-                    'replace' => @$params[\trim($array[0])]
+                    'replace' => @$params[$match]
                 ];
+
+                var_dump($vars);
             }
         }
 
