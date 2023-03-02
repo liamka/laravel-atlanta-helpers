@@ -1,9 +1,9 @@
 <?php
 
-if (!function_exists('arrayToXml')) {
-    function arrayToXml(array $arr, $xml, $itm_part = 'item', $already_runned = false)
+if (!function_exists('array_to_xml')) {
+    function array_to_xml(array $arr, $xml, $itm_part = 'item', $already_runned = false)
     {
-        if (!isTrue($already_runned)) {
+        if (!is_true($already_runned)) {
             try {
                 $xml = new SimpleXMLElement($xml);
             } catch (Exception $exception) {
@@ -19,15 +19,15 @@ if (!function_exists('arrayToXml')) {
                 $v = str_replace(['&', '<', '>', '\'', '"'], ['&amp;', '&lt;', '&gt;', '&apos;', '&quot;'], $v);
             }
 
-            is_array($v) ? arrayToXml($v, $xml->addChild($k), $itm_part, true) : $xml->addChild($k, $v);
+            is_array($v) ? array_to_xml($v, $xml->addChild($k), $itm_part, true) : $xml->addChild($k, $v);
         }
 
-        return isCli($already_runned) ? $xml : $xml->asXML();
+        return is_cli($already_runned) ? $xml : $xml->asXML();
     }
 }
 
-if (!function_exists('xmlToArray')) {
-    function xmlToArray($string): array
+if (!function_exists('xml_to_array')) {
+    function xml_to_array($string): array
     {
         $new = simplexml_load_string($string);
 

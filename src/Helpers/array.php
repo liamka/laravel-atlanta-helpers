@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Arr;
 
-if (!function_exists('jsonToArray')) {
-    function jsonToArray($json, $returnArray = true)
+if (!function_exists('json_to_array')) {
+    function json_to_array($json, $returnArray = true)
     {
         return json_decode((string)$json, $returnArray);
     }
 }
 
-if (!function_exists('arrayToJson')) {
-    function arrayToJson($array = [], $options = []): bool|string
+if (!function_exists('array_to_json')) {
+    function array_to_json($array = [], $options = []): bool|string
     {
         $default = [\JSON_UNESCAPED_UNICODE];
         $options = Arr::wrap($options);
@@ -26,20 +26,20 @@ if (!function_exists('arrayToJson')) {
     }
 }
 
-if (!function_exists('randomFromArray')) {
-    function randomFromArray($array = [])
+if (!function_exists('random_from_array')) {
+    function random_from_array($array = [])
     {
         return $array[array_rand($array)];
     }
 }
 
-if (!function_exists('objectToArray')) {
-    function objectToArray($obj)
+if (!function_exists('object_to_array')) {
+    function object_to_array($obj)
     {
         if (\is_object($obj) || \is_array($obj)) {
             $ret = (array)$obj;
             foreach ($ret as &$singleRet) {
-                $singleRet = objectToArray($singleRet);
+                $singleRet = object_to_array($singleRet);
             }
 
             return $ret;
@@ -49,8 +49,8 @@ if (!function_exists('objectToArray')) {
     }
 }
 
-if (!\function_exists('arrayDiffAssocRecursive')) {
-    function arrayDiffAssocRecursive($array1, $array2): array
+if (!\function_exists('array_diff_assoc_recursive')) {
+    function array_diff_assoc_recursive($array1, $array2): array
     {
         $difference = [];
 
@@ -59,7 +59,7 @@ if (!\function_exists('arrayDiffAssocRecursive')) {
                 if (!isset($array2[$key]) || !\is_array($array2[$key])) {
                     $difference[$key] = $value;
                 } else {
-                    $new_diff = arrayDiffAssocRecursive($value, $array2[$key]);
+                    $new_diff = array_diff_assoc_recursive($value, $array2[$key]);
                     if (!empty($new_diff)) {
                         $difference[$key] = $new_diff;
                     }
@@ -73,8 +73,8 @@ if (!\function_exists('arrayDiffAssocRecursive')) {
     }
 }
 
-if (!function_exists('arrayTo2d')) {
-    function arrayTo2d($array = [], $delimiter = '.')
+if (!function_exists('array_to_2d')) {
+    function array_to_2d($array = [], $delimiter = '.')
     {
         if (empty($array)) {
             return [];

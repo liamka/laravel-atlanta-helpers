@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Arr;
 
-if (!function_exists('displayErrors')) {
-    function displayErrors(int $display = 1): void
+if (!function_exists('display_errors')) {
+    function display_errors(int $display = 1): void
     {
         ini_set('display_errors', (string)$display);
         ini_set('display_startup_errors', (string)$display);
@@ -15,13 +15,13 @@ if (!function_exists('nl')) {
     function nl($count = 1): void
     {
         for ($i = 1; $i <= $count; ++$i) {
-            echo isTrue(isCli()) ? "\n" : \PHP_EOL;
+            echo is_true(is_cli()) ? "\n" : \PHP_EOL;
         }
     }
 }
 
-if (!function_exists('randomChars')) {
-    function randomChars(int $length = 10, string $type = 'ANY'): string
+if (!function_exists('random_chars')) {
+    function random_chars(int $length = 10, string $type = 'ANY'): string
     {
         $characters = '';
 
@@ -51,28 +51,28 @@ if (!function_exists('randomChars')) {
     }
 }
 
-if (!function_exists('randomString')) {
-    function randomString(int $length = 10): string
+if (!function_exists('random_string')) {
+    function random_string(int $length = 10): string
     {
-        return randomChars($length, 'chars');
+        return random_chars($length, 'chars');
     }
 }
 
-if (!function_exists('randomInteger')) {
-    function randomInteger(int $length = 10): int
+if (!function_exists('random_integer')) {
+    function random_integer(int $length = 10): int
     {
-        return (int)randomChars($length, 'numbers');
+        return (int)random_chars($length, 'numbers');
     }
 }
 
-if (!\function_exists('aprintf')) {
-    function aprintf($string, $params = [], $hide_if_null_value = false): mixed
+if (!\function_exists('vk_printf')) {
+    function vk_printf($string, $params = [], $hide_if_null_value = false): mixed
     {
-        $params = arrayTo2d($params);
+        $params = array_to_2d($params);
 
         $vars = [];
         \preg_match_all('#{{(.*?)}}#s', $string, $matches);
-        if (!isClean($matches[1])) {
+        if (!is_clean($matches[1])) {
             $matches = $matches[1];
 
             foreach ($matches as $match) {
@@ -83,7 +83,7 @@ if (!\function_exists('aprintf')) {
             }
         }
 
-        $params = arrayDiffAssocRecursive($vars, $params);
+        $params = array_diff_assoc_recursive($vars, $params);
 
         foreach ($params as $param) {
             if (!\is_null($param['replace']) || $hide_if_null_value === true) {
@@ -95,8 +95,8 @@ if (!\function_exists('aprintf')) {
     }
 }
 
-if (!function_exists('vkPregMatch')) {
-    function vkPregMatch($string, $pattern): bool
+if (!function_exists('vk_preg_match')) {
+    function vk_preg_match($string, $pattern): bool
     {
         $pattern = str_replace('.', '\.', $pattern);
         $pattern = str_replace('/', '\/', $pattern);
