@@ -183,3 +183,16 @@ if (!\function_exists('e_cli')) {
         }
     }
 }
+
+if (!function_exists('format_number')) {
+	function format_number($number): string
+	{
+		$suffixes = array('', 'k', 'm', 'b', 't');
+		$suffixIndex = 0;
+		while ($number >= 1000 && $suffixIndex < count($suffixes)-1) {
+			$number /= 1000;
+			$suffixIndex++;
+		}
+		return round($number, 1) . $suffixes[$suffixIndex];
+	}
+}
